@@ -1,0 +1,20 @@
+name: kinopoisk-lite
+recipe: lamp
+config:
+  xdebug: 'develop.debug'
+  php: 8.2
+  webroot: public
+services:
+  db:
+    restart: always
+    image: "mysql:8.0-debian"
+    environment:
+      MYSQL_USER=lamp
+      MYSQL_PASSWORD=lamp
+      MYSQL_DATABASE=lamp
+      PORT = 3306
+    volumes:
+      - /c/Users/serge/.lando/config/lamp-mysql/launch.sh:/launch.sh
+
+  phpmyadmin:
+    type: phpmyadmin
